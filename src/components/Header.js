@@ -1,7 +1,6 @@
 import React from 'react';
-import '../styles/Header.css';
 import logo from '../assets/img/FocusDoList-logo.png';
-
+import '../styles/Header.css';
 class Header extends React.Component {
 	render() {
 		return (

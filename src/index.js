@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './components/App';
 import './styles/index.css';
-import Header from './components/Header';
-import Task from './components/Task';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Header />
-		<Task name='Rafael' />
+		<App />
 	</React.StrictMode>,
 	document.getElementById('root')
 );

@@ -1,11 +1,21 @@
+:root {
+	--color-dark: #3e3e3e;
+	--color-greyish: #a8a8a8;
+	--color-palegrey: #eaeaef;
+	--color-white: #ffffff;
+
+	--color-yellow: #ffc43d;
+	--color-red: #ef476f;
+	--color-tealish: #1b9aaa;
+	--color-aquamarine: #06d6a0;
+}
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 	font-family: Helvetica Neue, Arial, sans-serif;
 }
-body {
-	width: 100vw;
-	height: 100vh;
-	background-color: #eaeaef;
+html {
+	font-size: 62.5%;
+	background-color: var(--color-palegrey);
 }
