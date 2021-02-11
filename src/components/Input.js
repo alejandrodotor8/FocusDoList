@@ -3,9 +3,14 @@ import '../styles/Input.css';
 class Input extends React.Component {
 	state = {};
 	render() {
-		const { onChange, listValues } = this.props;
+		const { onChange, task_title, onSubmit } = this.props;
 		return (
-			<div className='input-container'>
+			<form
+				className='input-container'
+				onSubmit={(e) => {
+					onSubmit(e, task_title);
+				}}
+			>
 				<input
 					onChange={onChange}
 					type='text'
@@ -13,10 +18,10 @@ class Input extends React.Component {
 					placeholder='Write a new task'
 					className='input-container__text'
 					id='input-label'
-					value={listValues}
+					value={task_title}
 				/>
 				<label htmlFor='input-label'></label>
-			</div>
+			</form>
 		);
 	}
 }
