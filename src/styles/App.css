@@ -2,3 +2,9 @@
 	width: 100%;
 	height: 100%;
 }
+.task_list {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+}
