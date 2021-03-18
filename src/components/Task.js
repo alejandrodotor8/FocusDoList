@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Task.css';
 
-function Task() {
+const Task = () => {
 	return (
 		<div className='task'>
 			<div className='task__label'></div>
@@ -11,5 +11,5 @@ function Task() {
 			</label>
 		</div>
 	);
-}
+};
 export default Task;
