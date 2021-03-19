@@ -7,13 +7,27 @@ const TaskList = (props) => {
 
 	const onChangeStatus = (e) => {
 		const { name, checked } = e.target;
-		const updateList = list.map((item) => ({
+		/* const updatedList = list.map((item) => ({
 			...item,
 			done: item.id === name ? checked : item.done,
-		}));
-		setList(updateList);
+		})); */
+		/* let updatedList = [];
+		list.forEach((item) => {
+			if (item.id === name) {
+				item.done = checked;
+			}
+			updatedList.push(item);
+		}); */
+		const updatedList = list.map((item) => {
+			if (item.id === name) {
+				item.done = checked;
+			}
+			return item;
+		});
+		console.log(updatedList);
+		setList(updatedList);
 		setTimeout(() => {
-			const removedList = updateList.filter((item) => !item.done);
+			const removedList = updatedList.filter((item) => !item.done);
 			setList(removedList);
 		}, 5000);
 	};
