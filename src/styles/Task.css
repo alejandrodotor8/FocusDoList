@@ -1,30 +1,82 @@
 @import './index';
 .task {
 	width: 90%;
-	height: 50px;
+	height: 55px;
 	margin: 10px;
-	background-color: var(--color-white);
+	display: flex;
 	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+.task button {
+	width: 50%;
+	height: 50px;
+	border: 0px;
+	display: flex;
+	align-items: center;
+	border-radius: inherit;
+	position: absolute;
+}
+.task__body {
+	position: absolute;
+	width: 100%;
+	height: 55px;
+	z-index: 100;
+	background-color: var(--color-white);
+	border-radius: inherit;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
 }
-.task__label {
+.task__config {
+	left: 10px;
+	background-color: var(--color-greyish);
+	justify-content: flex-start;
+}
+.task__trash {
+	background-color: var(--color-red);
+	right: 10px;
+	justify-content: flex-end;
+}
+
+.icon {
+	width: 90px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 90px;
+	height: 40px;
+}
+.icon__img {
+	width: 20px;
+	pointer-events: none;
+}
+.label {
 	width: 6px;
 	height: 30px;
 	border-radius: 5px;
 	background-color: var(--color-red);
 	margin-left: 15px;
+	pointer-events: none;
 }
-.task__text {
+.label-done {
+	background-color: var(--color-greyish);
+}
+.text {
 	width: 78%;
 	color: var(--color-dark);
-	font-size: 1.6rem;
+	font-size: 1.8rem;
 	text-align: left;
 	padding-left: 10px;
+	pointer-events: none;
 }
-.task__check {
+.text-done {
+	color: var(--color-greyish);
+	text-decoration: line-through;
+}
+.check {
 	-webkit-appearance: none;
 	appearance: none;
 	outline: none;
@@ -38,8 +90,9 @@
 	border-radius: 5px;
 	transition: all 0.3s ease;
 	margin-right: 15px;
+	pointer-events: none;
 }
-.task__check:checked {
+.check:checked {
 	background-image: url(../assets/img/check-mark.svg);
 	background-color: var(--color-aquamarine);
 	transform: scale(1.2);
