@@ -10,7 +10,7 @@
 .delete-done-btn {
 	top: 83px;
 	left: 50%;
-	position: absolute;
+	position: fixed;
 	background: var(--color-red);
 	color: #fff;
 	border: none;
