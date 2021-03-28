@@ -1,3 +1,4 @@
+![me](https://raw.githubusercontent.com/alejandrodotor8/FocusDoList/master/ignore/todoapp.gif)
 # [FocusDoList](https://focusdolist.netlify.app/)
 
 This is my first React App
