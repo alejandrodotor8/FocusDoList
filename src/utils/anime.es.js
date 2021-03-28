@@ -1248,7 +1248,7 @@ function anime(params) {
 		childrenLength = 0;
 	var resolve = null;
 
-	/* function makePromise(instance) {
+	function makePromise(instance) {
 		var promise =
 			window.Promise &&
 			new Promise(function(_resolve) {
@@ -1256,10 +1256,10 @@ function anime(params) {
 			});
 		instance.finished = promise;
 		return promise;
-	} */
+	}
 
 	var instance = createNewInstance(params);
-	//var promise = makePromise(instance);
+	var promise = makePromise(instance);
 
 	function toggleInstanceDirection() {
 		var direction = instance.direction;
@@ -1436,7 +1436,7 @@ function anime(params) {
 					setCallback('complete');
 					if (!instance.passThrough && 'Promise' in window) {
 						resolve();
-						//promise = makePromise(instance);
+						promise = makePromise(instance);
 					}
 				}
 			} else {
