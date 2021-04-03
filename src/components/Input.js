@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { setTask } from '../actions';
 import '../styles/Input.css';
 
 const Input = (props) => {
-	const { handleAddItem } = props;
 	const [description, setDescription] = useState('');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		handleAddItem({
+		props.setTask({
 			done: false,
 			id: (+new Date()).toString(),
 			description,
@@ -30,4 +31,8 @@ const Input = (props) => {
 		</form>
 	);
 };
-export default Input;
+
+const mapDispatchToProps = {
+	setTask,
+};
+export default connect(null, mapDispatchToProps)(Input);
