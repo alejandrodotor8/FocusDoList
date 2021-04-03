@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Task.css';
 import config from '../assets/img/config.png';
 import trash from '../assets/img/trash.png';
@@ -13,12 +14,18 @@ const Task = (props) => {
 
 	return (
 		<div
-			id={id}
-			onTouchStart={handleStartTouch}
-			onTouchMove={handleMoveTouch}
-			onTouchEnd={handleEndTouch}
-			onMouseDown={(e) => handleStartClick(e, id)}
 			className='task swipe'
+			id={id}
+			onTouchStart={(e) =>
+				e.target.parentElement.className === 'task__body' && handleStartTouch(e)
+			}
+			onTouchMove={(e) =>
+				e.target.parentElement.className === 'task__body' && handleMoveTouch(e)
+			}
+			onTouchEnd={(e) => e.target.parentElement.className === 'task__body' && handleEndTouch(e)}
+			onMouseDown={(e) =>
+				e.target.parentElement.className === 'task__body' && handleStartClick(e, id)
+			}
 		>
 			<button className='task__config'>
 				<div className='icon'>
@@ -26,9 +33,11 @@ const Task = (props) => {
 				</div>
 			</button>
 			<div className='task__body'>
-				<div className={done ? 'label-done label' : 'label'}></div>
-				<p className={done ? 'text-done text' : 'text'}>{description}</p>
-				<label>
+				<Link to={`/task/${id}`} className='link'>
+					<div className={done ? 'label-done label' : 'label'}></div>
+					<p className={done ? 'text-done text' : 'text'}>{description}</p>
+				</Link>
+				<label className='label-check'>
 					<input
 						defaultChecked={done}
 						onChange={onChangeCheck}

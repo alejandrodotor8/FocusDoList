@@ -11,8 +11,6 @@ const TaskList = (props) => {
 		const updatedList = list.map((item) => {
 			if (item.id === name) {
 				item.done = checked;
-				/* const elem = document.getElementById(item.id);
-				console.log(elem); */
 			}
 			return item;
 		});

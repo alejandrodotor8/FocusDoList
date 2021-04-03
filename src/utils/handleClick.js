@@ -1,31 +1,33 @@
 import anime from './anime.es';
 
 function handleMoveClick(e) {
-	let moveX = Number(e.target.dataset.x) - e.pageX;
+	const el = e.target.parentElement;
+	let moveX = Number(el.dataset.x) - e.pageX;
 	if (moveX > 130) {
 		moveX = 130;
 	}
 	if (moveX < -130) {
 		moveX = -130;
 	}
-	e.target.dataset.move = moveX;
+	el.dataset.move = moveX;
 	anime({
-		targets: e.target,
-		translateX: -Number(e.target.dataset.move),
+		targets: el,
+		translateX: -Number(el.dataset.move),
 		duration: 300,
 	});
 }
 function handleEndClick(e, elem) {
-	if (e.target.dataset.move > 100) {
-		e.target.dataset.move = 100;
-	} else if (e.target.dataset.move < -100) {
-		e.target.dataset.move = -100;
+	const el = e.target.parentElement;
+	if (el.dataset.move > 100) {
+		el.dataset.move = 100;
+	} else if (el.dataset.move < -100) {
+		el.dataset.move = -100;
 	} else {
-		e.target.dataset.move = 0;
+		el.dataset.move = 0;
 	}
 	const swipes = document.querySelectorAll('.swipe') || [];
 	swipes.forEach((item) => {
-		if (item.querySelector('.task__body') === e.target) {
+		if (item.querySelector('.task__body') === el) {
 			return;
 		}
 		item.querySelector('.task__body').dataset.move = 0;
@@ -37,18 +39,19 @@ function handleEndClick(e, elem) {
 	});
 	setTimeout(() => {
 		anime({
-			targets: e.target,
-			translateX: -Number(e.target.dataset.move),
+			targets: el,
+			translateX: -Number(el.dataset.move),
 		});
 		elem.removeEventListener('mousemove', handleMoveClick);
 	}, 1);
 }
 function handleStartClick(e, id) {
+	const el = e.target.parentElement;
 	const elem = document.getElementById(id);
 	elem.addEventListener('mousemove', handleMoveClick);
 	elem.addEventListener('mouseup', (e) => handleEndClick(e, elem));
 
-	e.target.dataset.x = Number(e.pageX) + Number(e.target.dataset.move || 0);
+	el.dataset.x = Number(e.pageX) + Number(el.dataset.move || 0);
 }
 
 export default handleStartClick;
