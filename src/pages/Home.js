@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import Header from '../components/Header';
 import TaskList from '../components/TaskList';
 import Input from '../components/Input';
-import taskJSON from '../utils/arrayTask';
 import '../styles/Home.css';
 
-function Home() {
-	const [list, setList] = useState(taskJSON);
+function Home({ tasks }) {
+	const [list, setList] = useState(tasks);
 	const handleAddItem = (addItem) => {
 		setList([...list, addItem]);
 	};
@@ -18,5 +18,9 @@ function Home() {
 		</div>
 	);
 }
-
-export default Home;
+const mapStateToProps = (state) => {
+	return {
+		tasks: state.tasks,
+	};
+};
+export default connect(mapStateToProps, null)(Home);
