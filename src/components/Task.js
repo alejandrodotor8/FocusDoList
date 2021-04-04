@@ -1,37 +1,37 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { deleteTask, changeCheckTask } from '../actions';
-import anime from '../utils/anime.es';
-import config from '../assets/img/config.png';
-import trash from '../assets/img/trash.png';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { deleteTask, changeCheckTask } from '../actions'
+import anime from '../utils/anime.es'
+import config from '../assets/img/config.png'
+import trash from '../assets/img/trash.png'
 //import handleStartClick from '../utils/handleClick';
-import { handleStartTouch, handleMoveTouch, handleEndTouch } from '../utils/handleTouch';
-import '../styles/Task.css';
+import { handleStartTouch, handleMoveTouch, handleEndTouch } from '../utils/handleTouch'
+import '../styles/Task.css'
 
 const Task = (props) => {
 	const {
 		data: { id, description, done },
-	} = props;
+	} = props
 
-	const [checked, setChecked] = useState(done);
+	const [checked, setChecked] = useState(done)
 
 	const handleChangeCheck = (e, id) => {
-		props.changeCheckTask({ checked: e.target.checked, id: id });
-		setChecked(e.target.checked);
-	};
+		props.changeCheckTask({ checked: e.target.checked, id: id })
+		setChecked(e.target.checked)
+	}
 	const handleDeleteTask = (e, id) => {
-		const target = e.target.parentElement.parentElement;
+		const target = e.target.parentElement.parentElement
 		anime({
 			targets: target,
 			translateX: 400,
 			duration: 3000,
 			opacity: 0,
-		});
+		})
 		setTimeout(() => {
-			props.deleteTask(id);
-		}, 500);
-	};
+			props.deleteTask(id)
+		}, 500)
+	}
 
 	return (
 		<div
@@ -74,11 +74,11 @@ const Task = (props) => {
 				</div>
 			</button>
 		</div>
-	);
-};
+	)
+}
 
 const mapDispatchToProps = {
 	deleteTask,
 	changeCheckTask,
-};
-export default connect(null, mapDispatchToProps)(Task);
+}
+export default connect(null, mapDispatchToProps)(Task)

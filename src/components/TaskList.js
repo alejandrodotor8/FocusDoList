@@ -1,22 +1,22 @@
-import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
-import { clearDoneTask } from '../actions';
-import anime from '../utils/anime.es';
-import Task from './Task';
-import '../styles/TaskList.css';
+import React, { Fragment } from 'react'
+import { connect } from 'react-redux'
+import { clearDoneTask } from '../actions'
+import anime from '../utils/anime.es'
+import Task from './Task'
+import '../styles/TaskList.css'
 
 const TaskList = (props) => {
-	const { tasks } = props;
+	const { tasks } = props
 
 	const doneList = () => {
-		const deleteList = [];
+		const deleteList = []
 		tasks.forEach((item) => {
 			if (item.done) {
-				deleteList.push(document.getElementById(item.id));
+				deleteList.push(document.getElementById(item.id))
 			}
-		});
-		return deleteList;
-	};
+		})
+		return deleteList
+	}
 
 	const handleClearDone = () => {
 		anime({
@@ -24,13 +24,13 @@ const TaskList = (props) => {
 			translateX: 400,
 			duration: 3000,
 			opacity: 0,
-		});
+		})
 		setTimeout(() => {
-			props.clearDoneTask();
-		}, 500);
-	};
+			props.clearDoneTask()
+		}, 500)
+	}
 
-	const checkList = tasks.map((item) => <Task key={item.id} data={item} />);
+	const checkList = tasks.map((item) => <Task key={item.id} data={item} />)
 	return (
 		<Fragment>
 			{doneList().length !== 0 ? (
@@ -47,14 +47,14 @@ const TaskList = (props) => {
 			<div className='div_gradient bottom_gradient'></div>
 			<div className='fakeInput'></div>
 		</Fragment>
-	);
-};
+	)
+}
 const mapStateToProps = (state) => {
 	return {
 		tasks: state.tasks,
-	};
-};
+	}
+}
 const mapDispatchToProps = {
 	clearDoneTask,
-};
-export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
+}
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList)

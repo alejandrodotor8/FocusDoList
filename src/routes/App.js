@@ -1,8 +1,8 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from '../pages/Home';
-import InfoTask from '../pages/InfoTask';
-import NotFound from '../pages/NotFound';
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Home from '../pages/Home'
+import InfoTask from '../pages/InfoTask'
+import NotFound from '../pages/NotFound'
 
 const App = () => (
 	<BrowserRouter>
@@ -12,6 +12,6 @@ const App = () => (
 			<Route component={NotFound} />
 		</Switch>
 	</BrowserRouter>
-);
+)
 
-export default App;
+export default App

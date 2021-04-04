@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, compose } from 'redux';
-import reducer from './reducers';
-import App from './routes/App';
-import './styles/index.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore, compose } from 'redux'
+import reducer from './reducers'
+import App from './routes/App'
+import './styles/index.css'
 
 const initialState = {
 	user: {},
@@ -14,12 +14,12 @@ const initialState = {
 		{ done: false, id: '1617298089589', description: '@alejandrodotor8' },
 		{ done: false, id: '1617298094842', description: 'Task One' },
 	],
-};
+}
 
 // DEV TOOLS
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__ || compose
 
-const store = createStore(reducer, initialState, composeEnhancers());
+const store = createStore(reducer, initialState, composeEnhancers())
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -28,4 +28,4 @@ ReactDOM.render(
 		</React.StrictMode>
 	</Provider>,
 	document.getElementById('root')
-);
+)
