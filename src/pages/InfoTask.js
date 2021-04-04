@@ -1,35 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getTask } from '../actions';
 import '../styles/InfoTask.css';
 
-class InfoTask extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			data: {},
-		};
-	}
-	componentDidMount() {
-		//this.fetchData();
-	}
+const InfoTask = (props) => {
+	const id = props.match.params.id;
+	useEffect(() => {
+		props.getTask(id);
+	});
+	return (
+		<div>
+			<button className='back-btn' type='button' onClick={() => props.history.push('/')}>
+				go back
+			</button>
+			<h1>{props.task.description}</h1>
+			<p>{id}</p>
+		</div>
+	);
+};
 
-	/* fetchData = async () => {
-		try {
-			const data = await applicationCache.task.read(this.props.match.params.id);
-			this.setState({
-				data: data,
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	}; */
+const mapStateToProps = (state) => {
+	return {
+		task: state.actualTask,
+	};
+};
+const mapDispatchToProps = {
+	getTask,
+};
 
-	render() {
-		return (
-			<div>
-				<h1>Hello form info task</h1>
-				<p>{this.state.data.description}</p>
-			</div>
-		);
-	}
-}
-export default InfoTask;
+export default connect(mapStateToProps, mapDispatchToProps)(InfoTask);

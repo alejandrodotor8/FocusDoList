@@ -26,6 +26,11 @@ const reducer = (state, action) => {
 				...state,
 				tasks: state.tasks.filter((item) => !item.done),
 			};
+		case 'GET_TASK':
+			return {
+				...state,
+				actualTask: state.tasks.find((item) => item.id === action.payload),
+			};
 		default:
 			return state;
 	}
