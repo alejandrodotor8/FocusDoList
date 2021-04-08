@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { deleteTask, changeCheckTask } from '../actions'
@@ -7,23 +7,35 @@ import config from '../assets/img/config.png'
 import trash from '../assets/img/trash.png'
 //import handleStartClick from '../utils/handleClick';
 import { handleStartTouch, handleMoveTouch, handleEndTouch } from '../utils/handleTouch'
+import Checkbox from '../components/Checkbox'
 import '../styles/Task.css'
 
 const Task = (props) => {
-	const {
+	let {
 		data: { id, description, done },
 	} = props
 
-	const [checked, setChecked] = useState(done)
+	const taskContainer = useRef(null)
+	const checkBtn = useRef(null)
+	const taskBody = useRef(null)
+	const linkDiv = useRef(null)
+	const linkP = useRef(null)
 
-	const handleChangeCheck = (e, id) => {
-		props.changeCheckTask({ checked: e.target.checked, id: id })
-		setChecked(e.target.checked)
+	const handleChangeCheck = (id, setCheckState) => {
+		props.changeCheckTask({ checked: checkBtn.current.checked, id: id })
+		setCheckState(checkBtn.current.checked)
+		done = checkBtn.current.checked
+		if (done) {
+			linkDiv.current.className = 'label-done label'
+			linkP.current.className = 'text-done text'
+		} else {
+			linkDiv.current.className = 'label'
+			linkP.current.className = 'text'
+		}
 	}
-	const handleDeleteTask = (e, id) => {
-		const target = e.target.parentElement.parentElement
+	const handleDeleteTask = (id) => {
 		anime({
-			targets: target,
+			targets: taskContainer.current,
 			translateX: 400,
 			duration: 3000,
 			opacity: 0,
@@ -35,41 +47,42 @@ const Task = (props) => {
 
 	return (
 		<div
-			className='task swipe'
 			id={id}
+			className='task swipe'
+			ref={taskContainer}
 			onTouchStart={(e) =>
-				e.target.parentElement.className === 'task__body' && handleStartTouch(e)
+				taskBody.current.className === 'task__body' && handleStartTouch(e, taskBody.current)
 			}
 			onTouchMove={(e) =>
-				e.target.parentElement.className === 'task__body' && handleMoveTouch(e)
+				taskBody.current.className === 'task__body' && handleMoveTouch(e, taskBody.current)
 			}
-			onTouchEnd={(e) => e.target.parentElement.className === 'task__body' && handleEndTouch(e)}
-			//onMouseDown={(e) =>
-			//e.target.parentElement.className === 'task__body' && handleStartClick(e, id)
-			//}
+			onTouchEnd={() =>
+				taskBody.current.className === 'task__body' && handleEndTouch(taskBody.current)
+			}
+			//onMouseDown={(e) => taskBody.current.className === 'task__body' && handleStartClick(e, id)}
 		>
 			<button className='task__config'>
 				<div className='icon'>
 					<img src={config} alt='config' className='icon__img' />
 				</div>
 			</button>
-			<div className='task__body'>
+			<div className='task__body' ref={taskBody}>
 				<Link to={`/task/${id}`} className='link'>
-					<div className={checked ? 'label-done label' : 'label'}></div>
-					<p className={checked ? 'text-done text' : 'text'}>{description}</p>
+					<div ref={linkDiv} className='label'></div>
+					<p ref={linkP} className='text'>
+						{description}
+					</p>
 				</Link>
-				<label className='label-check'>
-					<input
-						defaultChecked={checked}
-						type='checkbox'
-						className='check'
-						name={id}
-						onChange={(e) => handleChangeCheck(e, id)}
-					/>
-				</label>
+
+				<Checkbox
+					checked={done}
+					checkID={id}
+					checkBtn={checkBtn}
+					handleChange={handleChangeCheck}
+				/>
 			</div>
 			<button className='task__trash' name={id}>
-				<div className='icon' onClick={(e) => handleDeleteTask(e, id)}>
+				<div className='icon' onClick={() => handleDeleteTask(id)}>
 					<img src={trash} alt='trash' className='icon__img' />
 				</div>
 			</button>

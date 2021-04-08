@@ -1,0 +1,25 @@
+.label-check {
+	width: 10%;
+	height: 55px;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
+.check {
+	-webkit-appearance: none;
+	appearance: none;
+	outline: none;
+	width: 22px;
+	height: 22px;
+	background-color: var(--color-palegrey);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 13px;
+	border-radius: 5px;
+	transition: all 0.3s ease;
+}
+.check:checked {
+	background-image: url(../assets/img/check-mark.svg);
+	background-color: var(--color-aquamarine);
+	transform: scale(1.2);
+}
