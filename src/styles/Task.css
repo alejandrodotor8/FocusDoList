@@ -42,9 +42,6 @@
 	margin-left: 15px;
 	pointer-events: none;
 }
-.label-done {
-	background-color: var(--color-greyish);
-}
 .text {
 	width: max-content;
 	color: var(--color-dark);
@@ -52,10 +49,6 @@
 	text-align: left;
 	padding-left: 10px;
 	pointer-events: none;
-}
-.text-done {
-	color: var(--color-greyish);
-	text-decoration: line-through;
 }
 .task button {
 	width: 50%;
@@ -99,4 +92,12 @@
 	.task {
 		width: 40%;
 	}
+}
+
+.label-done {
+	background-color: var(--color-greyish);
+}
+.text-done {
+	color: var(--color-greyish);
+	text-decoration: line-through;
 }

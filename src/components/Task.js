@@ -5,7 +5,7 @@ import { deleteTask, changeCheckTask } from '../actions'
 import anime from '../utils/anime.es'
 import config from '../assets/img/config.png'
 import trash from '../assets/img/trash.png'
-//import handleStartClick from '../utils/handleClick';
+import handleStartClick from '../utils/handleClick'
 import { handleStartTouch, handleMoveTouch, handleEndTouch } from '../utils/handleTouch'
 import Checkbox from '../components/Checkbox'
 import '../styles/Task.css'
@@ -21,18 +21,6 @@ const Task = (props) => {
 	const linkDiv = useRef(null)
 	const linkP = useRef(null)
 
-	const handleChangeCheck = (id, setCheckState) => {
-		props.changeCheckTask({ checked: checkBtn.current.checked, id: id })
-		setCheckState(checkBtn.current.checked)
-		done = checkBtn.current.checked
-		if (done) {
-			linkDiv.current.className = 'label-done label'
-			linkP.current.className = 'text-done text'
-		} else {
-			linkDiv.current.className = 'label'
-			linkP.current.className = 'text'
-		}
-	}
 	const handleDeleteTask = (id) => {
 		anime({
 			targets: taskContainer.current,
@@ -59,7 +47,7 @@ const Task = (props) => {
 			onTouchEnd={() =>
 				taskBody.current.className === 'task__body' && handleEndTouch(taskBody.current)
 			}
-			//onMouseDown={(e) => taskBody.current.className === 'task__body' && handleStartClick(e, id)}
+			onMouseDown={(e) => taskBody.current.className === 'task__body' && handleStartClick(e, id)}
 		>
 			<button className='task__config'>
 				<div className='icon'>
@@ -73,12 +61,11 @@ const Task = (props) => {
 						{description}
 					</p>
 				</Link>
-
 				<Checkbox
 					checked={done}
-					checkID={id}
+					taskID={id}
 					checkBtn={checkBtn}
-					handleChange={handleChangeCheck}
+					changeStyle={{ linkDiv, linkP }}
 				/>
 			</div>
 			<button className='task__trash' name={id}>

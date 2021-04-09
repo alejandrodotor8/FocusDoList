@@ -12,6 +12,7 @@ const Input = (props) => {
 			done: false,
 			id: (+new Date()).toString(),
 			description,
+			notes: '',
 		})
 		setDescription('')
 	}

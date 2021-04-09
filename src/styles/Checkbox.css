@@ -2,7 +2,7 @@
 	width: 10%;
 	height: 55px;
 	display: flex;
-	justify-content: left;
+	justify-content: flex-start;
 	align-items: center;
 }
 .check {

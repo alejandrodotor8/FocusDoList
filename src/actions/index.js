@@ -18,3 +18,11 @@ export const getTask = (payload) => ({
 	type: 'GET_TASK',
 	payload,
 })
+export const clearTask = (payload) => ({
+	type: 'CLEAR_TASK',
+	payload,
+})
+export const setNoteTask = (payload) => ({
+	type: 'SET_NOTE_TASK',
+	payload,
+})

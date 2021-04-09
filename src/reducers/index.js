@@ -31,6 +31,22 @@ const reducer = (state, action) => {
 				...state,
 				actualTask: state.tasks.find((item) => item.id === action.payload),
 			}
+		case 'CLEAR_TASK':
+			return {
+				...state,
+				actualTask: [],
+			}
+		case 'SET_NOTE_TASK':
+			return {
+				...state,
+				tasks: state.tasks.map((item) => {
+					const { id, notes } = action.payload
+					if (item.id === id) {
+						item.notes = notes
+					}
+					return item
+				}),
+			}
 		default:
 			return state
 	}
