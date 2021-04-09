@@ -20,6 +20,7 @@
 	border-radius: 5px;
 	transform: translateX(-50%);
 	z-index: 100;
+	transition: all 0.5s ease-out;
 }
 .task_list {
 	max-height: 100%;
@@ -30,7 +31,7 @@
 	align-content: flex-start;
 	position: relative;
 	padding: 20px 0;
-	overflow-x: clip;
+	overflow-x: hidden;
 	overflow-y: auto;
 }
 

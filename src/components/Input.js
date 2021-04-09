@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
-import '../styles/Input.css';
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { setTask } from '../actions'
+import '../styles/Input.css'
 
 const Input = (props) => {
-	const { handleAddItem } = props;
-	const [description, setDescription] = useState('');
+	const [description, setDescription] = useState('')
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
-		handleAddItem({
+		e.preventDefault()
+		props.setTask({
 			done: false,
 			id: (+new Date()).toString(),
 			description,
-		});
-		setDescription('');
-	};
+			notes: '',
+		})
+		setDescription('')
+	}
 
 	return (
 		<form className='input-container' onSubmit={handleSubmit}>
@@ -28,6 +30,10 @@ const Input = (props) => {
 			/>
 			<label htmlFor='input-label'></label>
 		</form>
-	);
-};
-export default Input;
+	)
+}
+
+const mapDispatchToProps = {
+	setTask,
+}
+export default connect(null, mapDispatchToProps)(Input)
