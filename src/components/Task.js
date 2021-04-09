@@ -5,7 +5,6 @@ import { deleteTask, changeCheckTask } from '../actions'
 import anime from '../utils/anime.es'
 import config from '../assets/img/config.png'
 import trash from '../assets/img/trash.png'
-import handleStartClick from '../utils/handleClick'
 import { handleStartTouch, handleMoveTouch, handleEndTouch } from '../utils/handleTouch'
 import Checkbox from '../components/Checkbox'
 import '../styles/Task.css'
@@ -38,29 +37,34 @@ const Task = (props) => {
 			id={id}
 			className='task swipe'
 			ref={taskContainer}
-			onTouchStart={(e) =>
-				taskBody.current.className === 'task__body' && handleStartTouch(e, taskBody.current)
-			}
-			onTouchMove={(e) =>
-				taskBody.current.className === 'task__body' && handleMoveTouch(e, taskBody.current)
-			}
-			onTouchEnd={() =>
-				taskBody.current.className === 'task__body' && handleEndTouch(taskBody.current)
-			}
-			onMouseDown={(e) => taskBody.current.className === 'task__body' && handleStartClick(e, id)}
+			onTouchStart={(e) => {
+				if (window.screen.width <= 700 && taskBody.current.className === 'task__body') {
+					handleStartTouch(e, taskBody.current)
+				}
+			}}
+			onTouchMove={(e) => {
+				if (window.screen.width <= 700 && taskBody.current.className === 'task__body') {
+					handleMoveTouch(e, taskBody.current)
+				}
+			}}
+			onTouchEnd={() => {
+				if (window.screen.width <= 700 && taskBody.current.className === 'task__body') {
+					handleEndTouch(taskBody.current)
+				}
+			}}
 		>
 			<button className='task__config'>
-				<div className='icon'>
+				<Link to={`/task/${id}`} className='icon'>
 					<img src={config} alt='config' className='icon__img' />
-				</div>
+				</Link>
 			</button>
 			<div className='task__body' ref={taskBody}>
-				<Link to={`/task/${id}`} className='link'>
+				<div className='link'>
 					<div ref={linkDiv} className='label'></div>
 					<p ref={linkP} className='text'>
 						{description}
 					</p>
-				</Link>
+				</div>
 				<Checkbox
 					checked={done}
 					taskID={id}

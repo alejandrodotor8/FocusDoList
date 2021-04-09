@@ -5,7 +5,7 @@ import '../styles/Checkbox.css'
 
 const Checkbox = (props) => {
 	const { checked, taskID, checkBtn, changeStyle } = props
-	const [check, setCheck] = useState(checked)
+	const [check, setCheck] = useState(props.task.done || checked)
 	const { linkDiv, linkP } = changeStyle
 
 	const handleChangeCheck = (e) => {

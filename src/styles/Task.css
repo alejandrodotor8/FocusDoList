@@ -83,21 +83,28 @@
 	pointer-events: none;
 }
 
-@media (min-width: 560px) {
-	.task {
-		width: 60%;
-	}
-}
-@media (min-width: 800px) {
-	.task {
-		width: 40%;
-	}
-}
-
 .label-done {
 	background-color: var(--color-greyish);
 }
 .text-done {
 	color: var(--color-greyish);
 	text-decoration: line-through;
+}
+
+@media (min-width: 560px) {
+	.task {
+		width: 60%;
+	}
+}
+@media (min-width: 700px) {
+	.task {
+		width: 40%;
+	}
+	.task__config {
+		left: -80px;
+	}
+	.task__trash {
+		background-color: var(--color-red);
+		right: -80px;
+	}
 }
