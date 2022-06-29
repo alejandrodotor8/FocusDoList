@@ -1,4 +1,4 @@
-![me](https://raw.githubusercontent.com/alejandrodotor8/FocusDoList/master/ignore/todoapp.gif)
+![me](https://raw.githubusercontent.com/alejandrodotor8/FocusDoList/netlify/ignore/todoapp.gif)
 
 # [FocusDoList](https://focusdolist.netlify.app/)
 
