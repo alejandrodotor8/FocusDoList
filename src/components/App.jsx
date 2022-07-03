@@ -1,10 +1,13 @@
 import React from 'react'
 
-//import Btn from './Button'
-//import logo from '/svg/logo.svg'
+import MainHeader from './MainHeader'
 
 function App() {
-	return <div>hola</div>
+	return (
+		<>
+			<MainHeader />
+		</>
+	)
 }
 
 export default App

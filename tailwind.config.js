@@ -10,9 +10,10 @@ module.exports = {
 					yellow: '#FEC34C',
 				},
 				base: {
-					light: '#F4F4F7',
-					DEFAULT: '#A8A8A8',
-					dark: '#3E3E3E',
+					100: '#F4F4F7',
+					300: '#eaeaef',
+					500: '#A8A8A8',
+					700: '#3E3E3E',
 				},
 			},
 		},
