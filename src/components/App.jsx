@@ -1,41 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
+import MainHeader from './Header'
+import InputTask from './Input'
 
-import Btn from './Button'
-import logo from '../img/logo.svg'
+/* const initialState = {
+	user: {},
+	actualTask: {},
+	tasks: [
+		{ done: false, id: '1617298074075', description: 'FocusDolist 1.0', notes: '' },
+		{ done: false, id: '1617298089589', description: '@alejandrodotor8', notes: '' },
+		{ done: false, id: '1617298094842', description: 'Task One', notes: '' },
+	],
+} */
 
 function App() {
-	const [count, setCount] = useState(0)
-	const addOne = () => {
-		setCount(count + 1)
-	}
 	return (
-		<div className='App'>
-			<header className='App-header'>
-				<img src={logo} className='App-logo' alt='logo' />
-				<p className='font-semibold text-2xl'>Hello Vite + React!</p>
-				<p>
-					count is: {count}
-					<Btn handleClick={addOne}></Btn>
-				</p>
-				<p>
-					Edit <code>App.jsx</code> and save to test HMR updates.
-				</p>
-				<p>
-					<a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-						Learn React
-					</a>
-					{' | '}
-					<a
-						className='App-link'
-						href='https://vitejs.dev/guide/features.html'
-						target='_blank'
-						rel='noopener noreferrer'
-					>
-						Vite Docs
-					</a>
-				</p>
-			</header>
-		</div>
+		<>
+			<MainHeader />
+			<InputTask />
+		</>
 	)
 }
 
