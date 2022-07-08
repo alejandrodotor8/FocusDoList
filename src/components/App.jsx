@@ -1,8 +1,9 @@
 import React from 'react'
 import MainHeader from './Header'
 import InputTask from './Input'
+import List from './List'
 
-/* const initialState = {
+const initialState = {
 	user: {},
 	actualTask: {},
 	tasks: [
@@ -10,12 +11,13 @@ import InputTask from './Input'
 		{ done: false, id: '1617298089589', description: '@alejandrodotor8', notes: '' },
 		{ done: false, id: '1617298094842', description: 'Task One', notes: '' },
 	],
-} */
+}
 
 function App() {
 	return (
 		<>
 			<MainHeader />
+			<List list={initialState.tasks} />
 			<InputTask />
 		</>
 	)
