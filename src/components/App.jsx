@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MainHeader from './Header'
 import InputTask from './Input'
 import List from './List'
+import Task from './Task'
 
 const initialState = {
 	user: {},
@@ -14,10 +15,15 @@ const initialState = {
 }
 
 function App() {
+	const [tasks, setTasks] = useState(initialState.tasks)
 	return (
 		<>
 			<MainHeader />
-			<List list={initialState.tasks} />
+			<List>
+				{tasks.map((task) => (
+					<Task key={task.id} {...task} />
+				))}
+			</List>
 			<InputTask />
 		</>
 	)
