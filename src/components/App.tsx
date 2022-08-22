@@ -4,7 +4,7 @@ import InputTask from './Input'
 import List from './List'
 import Task from './Task'
 
-const initialState = {
+const initialState  = {
 	user: {},
 	actualTask: {},
 	tasks: [
